@@ -1,3 +1,5 @@
+## This fork from jtarchie adds another option to filter organization members
+
 # Github Pull Request Resource
 
 Tracks pull requests made to a particular github repo. In the spirit of [Travis
@@ -16,7 +18,7 @@ resource_types:
 - name: pull-request
   type: docker-image
   source:
-    repository: jtarchie/pr
+    repository: MaximilianMeister/pullrequest-resource
 ```
 
 ## Source Configuration
@@ -55,6 +57,10 @@ resource_types:
 * `disable_forks`: *Optional.* If set to `true`, it will filter out pull requests that
   were created via users that forked from your repo.
 
+* `org`: *Optional*. If set to a string it will only return pull requests where
+the owner is part of an organization. It is case sensitive. e.g. this prevents untrusted users to submit
+malicious code into your CI system.
+
 * `label`: *Optional.* If set to a string it will only return pull requests that have been
 marked with that specific label. It is case insensitive.
 
@@ -75,9 +81,6 @@ marked with that specific label. It is case insensitive.
 
 * `git_config`: *Optional*. If specified as (list of pairs `name` and `value`)
   it will configure git global options, setting each name with each value.
-
-* `org`: *Optional*. If set to a string it will only return pull requests where
-the owner is part of an organization. It is case sensitive.
 
   This can be useful to set options like `credential.helper` or similar.
 
