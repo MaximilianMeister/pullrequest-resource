@@ -14,6 +14,10 @@ class PullRequest
     base_repo != head_repo
   end
 
+  def org_member?(org:)
+    Octokit.organization_member?(org, @pr.user[:login])
+  end
+
   def equals?(id:, sha:)
     [self.sha, self.id.to_s] == [sha, id.to_s]
   end

@@ -1,3 +1,5 @@
+require_relative '../input'
+
 module Filters
   class Org
     def initialize(pull_requests:, input: Input.instance)
@@ -7,9 +9,7 @@ module Filters
 
     def pull_requests
       if @input.source.org
-        @memoized ||= @pull_requests.select do |pr|
-          Octokit.organization_member?(@input.source.org, pr.user[:login])
-        end
+        @memoized ||= @pull_requests.delete_if { |pr| pr.org_member?(org: @input.source.org) }
       else
         @pull_requests
       end

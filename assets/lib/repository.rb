@@ -2,6 +2,7 @@ require_relative 'filters/all'
 require_relative 'filters/fork'
 require_relative 'filters/label'
 require_relative 'filters/path'
+require_relative 'filters/org'
 
 class Repository
   attr_reader :name
