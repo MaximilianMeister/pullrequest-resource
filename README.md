@@ -18,7 +18,7 @@ resource_types:
 - name: pull-request
   type: docker-image
   source:
-    repository: MaximilianMeister/pullrequest-resource
+    repository: mmeister/pullrequest-resource
 ```
 
 ## Source Configuration
